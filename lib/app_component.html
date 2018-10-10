@@ -5,11 +5,14 @@
           <div class="col-6">
             <form>
               <label>Сколько вы хотите снять?</label>
-              <input type="number" class="form-control" placeholder="Введите целое число">
+              <input type="number" min="0" step="1" (keyup)="getValue($event)" class="form-control" placeholder="Введите целое число">
             </form>
           </div>
           <div class="col-5">
-            Ваши деньги:
+              <label>Ваши деньги:</label>
+              <div *ngFor="let item of resultList">
+                <span class="emodji">{{item.result}}</span>
+              </div>
           </div>
         </div>
       </div>

@@ -116,3 +116,7 @@ html, body {
 		box-shadow: 15px -15px #dfdfdf, 15px 15px #4f4d49, -15px 15px #dfdfdf, -15px -15px #4f4d49;
 	}
 }
+
+.emodji {
+	font-size: 23px;
+}
