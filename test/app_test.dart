@@ -1,22 +1,38 @@
-@TestOn('browser')
+@TestOn("vm")
 
-import 'package:angular_test/angular_test.dart';
-import 'package:dart_test/app_component.dart';
-import 'package:dart_test/app_component.template.dart' as ng;
-import 'package:test/test.dart';
+import '../lib/src/atm.dart';
+import '../lib/src/nominals.dart';
+import "package:test/test.dart";
 
 void main() {
-  final testBed = NgTestBed.forComponent<AppComponent>(ng.AppComponentNgFactory);
-  NgTestFixture<AppComponent> fixture;
+  Atm atm = new Atm(nominals);
 
-  setUp(() async {
-    fixture = await testBed.create();
+  test('Take 20', () {
+  final int value = 20;
+  atm.calculate(value);
+    expect(atm.list[0].amount, 0);
+    expect(atm.list[1].amount, 1);
+    expect(atm.list[2].amount, 1);
+    expect(atm.list[3].amount, 5);
   });
 
-  tearDown(disposeAnyRunningTest);
-
-  test('Text', () {
-    expect(fixture.text, 'Сколько вы хотите снять? Ваши деньги:');
+  test('Take 10', () {
+  final int value = 10;
+  atm.initial();
+  atm.calculate(value);
+    expect(atm.list[0].amount, 0);
+    expect(atm.list[1].amount, 0);
+    expect(atm.list[2].amount, 1);
+    expect(atm.list[3].amount, 5);
   });
-  // ···
+
+  test('Take 50', () {
+  final int value = 50;
+  atm.initial();
+  atm.calculate(value);
+    expect(atm.list[0].amount, 0);
+    expect(atm.list[1].amount, 4);
+    expect(atm.list[2].amount, 1);
+    expect(atm.list[3].amount, 5);
+  });
 }
