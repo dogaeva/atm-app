@@ -12,10 +12,8 @@ class AppComponent {
 
   void getValue(e) {
     int money = e.target.value != '' ? int.parse(e.target.value) : 0;
-    if (money != 0) {
       atm.initial();
       atm.calculate(money);
-    }
   }
 
 }

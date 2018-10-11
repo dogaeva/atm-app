@@ -11,7 +11,7 @@ class Atm {
         if (gotFirstLoop) {
           while(value >= nominal.value) {
             nominal.amount++;
-            nominal.result += '  ' + nominal.emodji;
+            nominal.result += '      ' + nominal.emodji;
             value -= nominal.value;
           }
         } else if (value > nominal.value) {

@@ -120,3 +120,11 @@ html, body {
 .emodji {
 	font-size: 23px;
 }
+
+.card-container {
+	padding: 7% 10%;
+}
+
+.card {
+	min-height: 350px;
+}
