@@ -22,7 +22,6 @@ void main() {
   });
 
   test('Check initial result', () {
-  value = 20;
   atm.initial();
   result.initial(nominals);
   atm.calculate(value);
