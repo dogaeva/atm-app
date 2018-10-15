@@ -2,22 +2,22 @@ import 'nominal.dart';
 
 class Atm {
   List<Nominal> list;
+  var result = {};
 
   void calculate(int value) {
     bool gotFirstLoop = false;
-
     while(value > 0) {
-      for (Nominal nominal in list) {
         if (gotFirstLoop) {
-          while(value >= nominal.value) {
-            nominal.amount++;
-            nominal.result += '      ' + nominal.emodji;
-            value -= nominal.value;
+          for(int i=list.length - 1; i>=0; i--) {
+            while(value >= list[i].value) {
+              result[list[i].value]++;
+              value -= list[i].value;
+            }
           }
-        } else if (value > nominal.value) {
-          nominal.amount++;
-          nominal.result += '  ' + nominal.emodji;
-          value -= nominal.value;
+        } else for (int i=0; i<list.length; i++) {
+        if (value > list[i].value) {
+          result[list[i].value]++;
+          value -= list[i].value;
         }
       }
       gotFirstLoop = true;
@@ -25,9 +25,8 @@ class Atm {
   }
 
   void initial() {
-    for (Nominal nominal in list) {
-      nominal.result = '';
-      nominal.amount = 0;
+    for (int i=0; i<list.length; i++) {
+      result[list[i].value] = 0;
     }
   }
 
